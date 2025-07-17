@@ -6,6 +6,10 @@ import com.complanza.complaint.DTO.RegisterRequest;
 import com.complanza.complaint.Service.AuthService;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +28,7 @@ public class AuthController {
      * @param request contains name, email, and password
      * @return success message
      */
-   @PostMapping("/register")
+    @PostMapping("/register")
 public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
     System.out.println("🚀 [Controller] Incoming request:");
     System.out.println(" - Name: " + request.getName());
@@ -32,7 +36,7 @@ public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
     System.out.println(" - Password: " + request.getPassword());
 
     String response = authService.register(request);
-    return ResponseEntity.ok(response);
+    return ResponseEntity.ok(response); // ✅ returns plain string
 }
 
 

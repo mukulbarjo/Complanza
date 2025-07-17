@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div class="register-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="form.name" name="name" placeholder="Full Name" required>
+    <input type="email" [(ngModel)]="form.email" name="email" placeholder="Email" required>
+    <input type="password" [(ngModel)]="form.password" name="password" placeholder="Password" required>
+
+    <button type="submit" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Registering...' : 'Register' }}
+    </button>
+
+    <p *ngIf="successMsg" class="success">{{ successMsg }}</p>
+    <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
+
+    <p>
+  Already have an account?
+  <a routerLink="/login">Login here</a>
+</p>
+
+  </form>
+</div>

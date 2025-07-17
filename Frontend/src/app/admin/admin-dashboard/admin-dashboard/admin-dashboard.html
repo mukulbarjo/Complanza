@@ -1,1 +1,14 @@
-<p>admin-dashboard works!</p>
+<!-- <app-navbar role="ADMIN"></app-navbar> -->
+
+<div class="container">
+  <h1>Welcome Admin!</h1>
+
+  <div class="button-grid">
+    <button (click)="goTo('users')">User Management</button>
+    <button (click)="goTo('complaints')">Complaints</button>
+    <button (click)="goTo('payments')">Payments</button>
+    <button (click)="goTo('announcements')">Announcements</button>
+    <button (click)="goTo('events')">Events</button>
+    <button (click)="goTo('feedback')">Feedback</button>
+  </div>
+</div>

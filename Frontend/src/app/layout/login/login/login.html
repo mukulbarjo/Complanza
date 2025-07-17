@@ -1,1 +1,15 @@
-<p>login works!</p>
+<h3>Login</h3>
+<form (ngSubmit)="onSubmit()">
+  <input type="email" [(ngModel)]="form.email" name="email" placeholder="Email" required />
+  <input type="password" [(ngModel)]="form.password" name="password" placeholder="Password" required />
+
+  <p *ngIf="successMsg" style="color: green">{{ successMsg }}</p>
+  <p *ngIf="errorMsg" style="color: red">{{ errorMsg }}</p>
+
+  <button type="submit">Login</button>
+</form>
+
+<p>
+  Don't have an account?
+  <button (click)="goToRegister()">Register</button>
+</p>

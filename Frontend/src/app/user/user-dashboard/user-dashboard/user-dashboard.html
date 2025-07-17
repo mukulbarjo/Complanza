@@ -1,1 +1,60 @@
-<p>user-dashboard works!</p>
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <h2>COMPLANZA</h2>
+    <nav>
+      <a routerLink="/user/profile">Profile</a>
+      <a routerLink="/user/complaints" class="active">Complaints</a>
+      <a routerLink="/user/feedback">Feedback</a>
+      <a routerLink="/user/service-requests">Service Requests</a>
+      <a routerLink="/login">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="dashboard-main">
+    <div class="top-bar">
+      <input type="text" placeholder="Search" class="search-box" />
+      <div class="user-info">
+        <span class="settings-icon">⚙️</span>
+        <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic" />
+      </div>
+    </div>
+
+    <h1>Welcome, Ethan</h1>
+
+    <div class="stats">
+      <div class="stat-box">Complaints Filed<br /><span>{{ complaints.length }}</span></div>
+      <div class="stat-box">Complaints Resolved<br /><span>{{ resolvedCount }}</span></div>
+      <div class="stat-box">Complaints Pending<br /><span>{{ pendingCount }}</span></div>
+    </div>
+
+    <button class="complaint-btn">File New Complaint</button>
+
+    <div class="main-content">
+      <div class="recent">
+        <h3>Recent Complaints</h3>
+        <ul>
+          <li *ngFor="let c of complaints">
+            #{{ c.id }} - {{ c.title }}
+            <span class="status" [ngClass]="{
+              'pending': c.status === 'Pending',
+              'resolved': c.status === 'Resolved'
+            }">
+              {{ c.status }}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="side-section">
+        <h3>Feedback</h3>
+        <textarea placeholder="Enter your feedback" [(ngModel)]="feedback"></textarea>
+        <button (click)="submitFeedback()" class="submit-btn">Submit</button>
+
+        <h3>Notifications</h3>
+        <ul class="notifications">
+          <li *ngFor="let note of notifications">{{ note }}</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</div>
